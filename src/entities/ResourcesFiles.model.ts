@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
 import { sequelize } from '../config/connection/sequelizeHelper';
 
-export const ResoursesFiles = sequelize.define(
+export const ResourcesFiles = sequelize.define(
   'files',
   {
     id: {

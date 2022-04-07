@@ -3,6 +3,7 @@ import { ILogger } from '@services/loggerService'
 import * as express from 'express'
 import { IResponse } from '../../../models/Response.model'
 import { generalMap } from '../../../services/victims/general-map'
+import { MemoriesService } from '../../../services/victims/MemoriesService.class'
 
 import { inject } from 'inversify'
 import {
@@ -26,9 +27,9 @@ export class VictimsController implements interfaces.Controller {
   ) {
 
     try {
-      const echoMessage = await generalMap(req.query)
+      const response = await generalMap(req.query)
       const httpResponse: IResponse = {
-        data: echoMessage,
+        data: response,
       }
       res.json(httpResponse)
       nextFunc()
@@ -43,7 +44,7 @@ export class VictimsController implements interfaces.Controller {
     }
   }
 
-  @httpPost('/department')
+  @httpPost('/additional-information')
   public async post(
     @request() req: express.Request,
     @response() res: express.Response,
@@ -51,7 +52,7 @@ export class VictimsController implements interfaces.Controller {
   ) {
 
     try {
-      const echoMessage = await generalMap(req.query)
+      const echoMessage = await MemoriesService.processMemories(req.query)
       const httpResponse: IResponse = {
         data: echoMessage,
       }

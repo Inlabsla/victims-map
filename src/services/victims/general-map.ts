@@ -160,7 +160,8 @@ const generalMap = async (request: any) => {
       uniqueVictimsRegister,
       territoryPopulation,
       collectiveVictims,
-      actsData
+      actsData,
+      request
     );
 
     uniqueVictimsRegister.forEach((uvr: any) => {
@@ -213,7 +214,8 @@ const getTerritoriesData = async (request: any) =>
     uniqueVictimsRegister: any[],
     territoryPopulation: number,
     collectiveVictims: any[],
-    actsData: any[]
+    actsData: any[],
+    params: any
   ) => {
     const lifecycle: any[] = processAdittionalData(
       await LifecycleService.processLifeCycle(),
@@ -263,7 +265,7 @@ const getTerritoriesData = async (request: any) =>
       territoryPopulation
     );
     const memories: any[] = processAdittionalData(
-      await MemoriesService.processMemories(),
+      await MemoriesService.processMemories(params),
       _.groupBy(uniqueVictimsRegister, 'id_dpto'),
       territoryPopulation,
       true
