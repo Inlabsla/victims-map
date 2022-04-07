@@ -1,15 +1,11 @@
 {
-  "name": "api-template",
+  "name": "api-victims",
   "version": "0.1.0",
-  "description": "Plantilla para la construccion de microservicios de backend (REST API) en MBaaS Davivienda",
-  "repository": {
-    "type": "git",
-    "url": "https://source.cloud.google.com/mbaas-desarrollo/api-template"
-  },
+  "description": "",
   "keywords": [
     "API"
   ],
-  "author": "DXC - Davivienda",
+  "author": "Juan Jimenez",
   "license": "UNLICENSED",
   "main": "dist/index.js",
   "scripts": {
