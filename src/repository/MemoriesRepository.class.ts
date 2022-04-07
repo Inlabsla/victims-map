@@ -22,7 +22,7 @@ export class MemoriesRepository {
       nest: true
     }
 
-    if(params && params.dpto){
+    if(params && params.dpto && params.dpto !== 'all'){
       whereQuery = {
         where: {
           id_dpto: params.dpto
