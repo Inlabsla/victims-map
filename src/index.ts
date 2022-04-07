@@ -76,6 +76,4 @@ const httpServer = app.listen(httpPort, () => {
   }, 10000)
 })
 
-console.warn('process.env', JSON.stringify(process.env))
-
 exports = module.exports = app
