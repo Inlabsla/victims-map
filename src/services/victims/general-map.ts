@@ -3,17 +3,17 @@ import { IGeneralView } from '../../models/dataModels/IGeneralView.model';
 import { IMunicipalities } from '../../models/dataModels/IMunicipalities.model';
 import { TerritoriesRepository } from '../../repository/TerritoriesRepository.class';
 import { ActsService } from './ActsService.class';
+import { CategorySrcService } from './CategorySrcService.class';
 import { DisabilitiesService } from './DisabilitiesService.class';
 import { EthnicityService } from './EthnicityService.class';
 import { GenresService } from './GenresService.class';
 import { LifecycleService } from './LifecycleService.class';
-import { SubjectsCollectiveReparationService } from './SubjectsCollectiveReparationService.class';
-import { UniqueVictimsRegisterService } from './UniqueVictimsRegisterService.class';
-import { CategorySrcService } from './CategorySrcService.class';
-import { PircLockTypeService } from './PircLockTypeService.class';
-import { TypeSrcService } from './TypeSrcService.class';
-import { PhaseStatusService } from './PhaseStatusService.class';
 import { MemoriesService } from './MemoriesService.class';
+import { PhaseStatusService } from './PhaseStatusService.class';
+import { PircLockTypeService } from './PircLockTypeService.class';
+import { SubjectsCollectiveReparationService } from './SubjectsCollectiveReparationService.class';
+import { TypeSrcService } from './TypeSrcService.class';
+import { UniqueVictimsRegisterService } from './UniqueVictimsRegisterService.class';
 
 const generalMap = async (request: any) => {
 
