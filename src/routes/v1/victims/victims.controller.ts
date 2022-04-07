@@ -18,7 +18,7 @@ import {
 export class VictimsController implements interfaces.Controller {
   constructor(@inject(TYPES.ILogger) private logger: ILogger) {}
 
-  @httpPost('/')
+  @httpPost('')
   public async generalMap(
     @request() req: express.Request,
     @response() res: express.Response,
