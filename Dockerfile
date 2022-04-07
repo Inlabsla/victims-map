@@ -1,6 +1,6 @@
 #
 # ---- Base Node ----
-FROM node:lts-alpine AS base
+FROM node:12.20.0 AS base
 
 # Set working directory
 WORKDIR /usr/src/api
@@ -13,18 +13,17 @@ COPY package*.json ./
 FROM base AS dependencies
 # install node packages
 RUN npm set progress=false && npm config set depth 0
-RUN npm install 
+RUN npm install
 # copy production node_modules aside
 RUN cp -R node_modules prod_node_modules
 # install ALL node_modules, including 'devDependencies'
 RUN npm install
-
 #
 # ---- Build ----
 # build dist and then run linters and tests
 FROM dependencies AS build
 COPY . .
-RUN  npm run build && npm run test
+RUN  npm run build
 
 #
 # ---- Release ----

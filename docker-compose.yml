@@ -1,0 +1,23 @@
+version: '3'
+services:
+  victims_service:
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '8080:8080'
+    volumes:
+      - /usr/src/app/node_modules
+      - .:/usr/src/app
+    container_name: victimsmapservice
+    environment:
+      NODE_ENV: 'development'
+      HOSTNAME: 'victims.map.co'
+      PORT: 8080
+      ROOT_PATH: /api/v1
+      BD_HOST: 'victims-map-instance.cw20te8mp3wi.us-east-1.rds.amazonaws.com'
+      BD_NAME: 'victimsmap'
+      BD_PASSWORD: 'Mapauv1234'
+      BD_PORT: 5432
+      BD_USERNAME: 'administrator'
