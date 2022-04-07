@@ -3,8 +3,10 @@ import { Memories } from '../entities/Memories.model';
 import { Resources } from '../entities/Resources.model';
 
 export class MemoriesRepository {
-  public static getMemories = async () => {
-    return Memories.findAll({
+  public static getMemories = async (params: any) => {
+
+    let whereQuery = {}
+    let options = {
       attributes: ['id', 'id_dpto'],
       include: [
         {
@@ -18,6 +20,17 @@ export class MemoriesRepository {
       ],
       raw: true,
       nest: true
-    });
+    }
+
+    if(params && params.dpto){
+      whereQuery = {
+        where: {
+          id_dpto: params.dpto
+        }
+      }
+      options = {...options, ...whereQuery}
+    }
+
+    return Memories.findAll(options);
   };
 }
