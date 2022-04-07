@@ -1,9 +1,9 @@
-import { Memories } from '../entities/Memories.model';
 import { Categories } from '../entities/Categories.model';
-import { Resources } from '../entities/Resources.model';
-import { InputType } from '../entities/InputType.model';
 import { Departments } from '../entities/Departments.model';
 import { Fonts } from '../entities/Fonts.model';
+import { InputType } from '../entities/InputType.model';
+import { Memories } from '../entities/Memories.model';
+import { Resources } from '../entities/Resources.model';
 
 export class MemoriesRepository {
   public static getMemories = async (params: any) => {

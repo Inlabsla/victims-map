@@ -1,7 +1,7 @@
-import { ResourcesFilesService } from './ResourcesFilesService.class';
-import { MemoriesRepository } from '../../repository/MemoriesRepository.class';
-import { IResourceResponse } from '../../models/dataModels/IResourceResponse.model';
 import { IResourceFiles } from '../../models/dataModels/IResourceFiles.model';
+import { IResourceResponse } from '../../models/dataModels/IResourceResponse.model';
+import { MemoriesRepository } from '../../repository/MemoriesRepository.class';
+import { ResourcesFilesService } from './ResourcesFilesService.class';
 
 export class MemoriesService {
   public static processMemories = async (
@@ -13,11 +13,11 @@ export class MemoriesService {
     );
 
     if (!allInformation) {
-      throw 'No data found for resource id';
+      throw new Error('No data found for resource id');
     }
 
     if (!resourceFiles.length) {
-      throw 'No data found for resource id';
+      throw new Error('No data found for resource id');
     }
 
     return {
@@ -30,7 +30,7 @@ export class MemoriesService {
       resource: {
         resourceDescription: allInformation.resource.descripcion_recurso,
         resourceTittle: allInformation.resource.titulo_recurso,
-        resourceFiles: resourceFiles
+        resourceFiles
       },
       territoryName: allInformation.dpto.nombre_dpto
     };
