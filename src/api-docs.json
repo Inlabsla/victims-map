@@ -1,0 +1,83 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Este proyecto es una API demo con las dependencias y configuraciones estándares para los microservicios del BaaS de Davivienda.",
+    "version": "0.1.0",
+    "title": "Plantilla para APIs BaaS Davivienda"
+  },
+  "basePath": "/api-template/v1/example",
+  "tags": [
+    {
+      "name": "echo"
+    }
+  ],
+  "schemes": ["http"],
+  "paths": {
+    "/echo": {
+      "post": {
+        "tags": ["echo"],
+        "summary": "Retorna un mensaje de eco luego de una demora confirgurable. Permite forzar error de backend.",
+        "description": "",
+        "operationId": "echo",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "mensaje para eco y propiedades especiales",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EchoRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operación correcta",
+            "schema": {
+              "$ref": "#/definitions/EchoResponse"
+            }
+          },
+          "422": {
+            "description": "Datos de solicitud inválidos"
+          },
+          "500": {
+            "description": "Error de backend forzado"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "EchoRequest": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "delay": {
+          "type": "integer",
+          "format": "int32",
+          "minimum": 0,
+          "maximum": 5000
+        },
+        "crash": {
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+    "EchoResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
