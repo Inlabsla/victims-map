@@ -8,7 +8,7 @@ test/coverage
 node_modules/
 
 # dotenv environment variables file
-.env
+
 
 # local logs
 npm-debug.log
