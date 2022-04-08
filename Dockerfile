@@ -36,4 +36,5 @@ COPY --from=build /usr/src/api/dist ./dist
 COPY package*.json ./
 # expose port and define CMD
 EXPOSE 8080
+EXPOSE 443
 CMD node .
