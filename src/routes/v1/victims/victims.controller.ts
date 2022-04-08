@@ -3,7 +3,7 @@ import { ILogger } from '@services/loggerService'
 import * as express from 'express'
 import { IResponse } from '../../../models/Response.model'
 import { generalMap } from '../../../services/victims/general-map'
-import { MemoriesService } from '../../../services/victims/MemoriesService.class'
+import { MemoriesService } from '../../../services/memories/MemoriesService.class'
 
 import { inject } from 'inversify'
 import {
@@ -25,7 +25,6 @@ export class VictimsController implements interfaces.Controller {
     @response() res: express.Response,
     @next() nextFunc: express.NextFunction
   ) {
-
     try {
       const response = await generalMap(req.query)
       const httpResponse: IResponse = {
@@ -34,7 +33,9 @@ export class VictimsController implements interfaces.Controller {
       res.json(httpResponse)
       nextFunc()
     } catch (err) {
-      this.logger.error(`POST /v1/echo - Error en echo service: ${err}`)
+      this.logger.error(
+        `POST /api/v1/victims-map/ - Error en general map service: ${err}`
+      )
       const httpResponse: IResponse = {
         data: '',
         errors: ['internal_server_error'],
@@ -45,12 +46,11 @@ export class VictimsController implements interfaces.Controller {
   }
 
   @httpPost('/additional-information')
-  public async post(
+  public async getAdditionalInformation(
     @request() req: express.Request,
     @response() res: express.Response,
     @next() nextFunc: express.NextFunction
   ) {
-
     try {
       const echoMessage = await MemoriesService.processMemories(req.query)
       const httpResponse: IResponse = {
@@ -59,7 +59,9 @@ export class VictimsController implements interfaces.Controller {
       res.json(httpResponse)
       nextFunc()
     } catch (err) {
-      this.logger.error(`POST /v1/echo - Error en echo service: ${err}`)
+      this.logger.error(
+        `POST /api/v1/victims-map/ - Error en additional-information service: ${err}`
+      )
       const httpResponse: IResponse = {
         data: '',
         errors: ['internal_server_error'],
