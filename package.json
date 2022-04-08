@@ -82,5 +82,8 @@
     "tslint-config-security": "^1.14.0",
     "tslint-html-report": "^2.0.2",
     "typescript": "^4.1.3"
+  },
+  "engines": {
+    "node": "12.x"
   }
 }
