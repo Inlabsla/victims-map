@@ -6,7 +6,8 @@ export const ResourcesFiles = sequelize.define(
   {
     id: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      primaryKey: true
     },
     id_recurso: {
       type: DataTypes.INTEGER,

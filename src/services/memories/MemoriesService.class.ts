@@ -7,7 +7,7 @@ export class MemoriesService {
   public static processMemories = async (
     params: any
   ): Promise<IResourceResponse> => {
-    const allInformation: any = await MemoriesRepository.getMemories(params);
+    const allInformation: any = await MemoriesRepository.getMemoriesData(params);
     const resourceFiles: any[] = await ResourcesFilesService.processResourcesFiles(
       params
     );
