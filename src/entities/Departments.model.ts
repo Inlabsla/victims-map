@@ -1,9 +1,6 @@
-import { DataTypes } from 'sequelize';
-import { sequelize } from '../config/connection/sequelizeHelper';
-import { DaneCoordinates } from './DaneCoordinates.model';
-import { DaneProjection } from './DaneProjection.model';
-import { Municipalities } from './Municipalities.model';
-import { UniqueRegisterVictims } from './UniqueRegisterVictims.model';
+import { DataTypes } from 'sequelize'
+import { sequelize } from '../config/connection/sequelizeHelper'
+import { DaneProjection } from './DaneProjection.model'
 
 export const Departments = sequelize.define(
   'dptos',
@@ -11,23 +8,25 @@ export const Departments = sequelize.define(
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
     },
     cod_dpto: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     nombre_dpto: {
       type: DataTypes.STRING,
-      allowNull: false
-    }
+      allowNull: false,
+    },
   },
   {
     tableName: 'departamentos',
     timestamps: true,
-    underscored: true
+    underscored: true,
   }
-);
+)
 
-Departments.hasMany(Municipalities, { foreignKey: 'id_dpto' });
-Departments.hasMany(UniqueRegisterVictims, { foreignKey: 'id_dpto' });
+Departments.belongsTo(DaneProjection, {
+  foreignKey: 'id',
+  targetKey: 'id_dpto',
+})
