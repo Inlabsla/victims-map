@@ -3,6 +3,7 @@ import { ILogger } from '@services/loggerService'
 import * as express from 'express'
 import { IResponse } from '../../../models/Response.model'
 import { generalMap } from '../../../services/victims/general-map'
+import { firstLevelData } from '../../../services/victims-new/firstLevelData'
 import { MemoriesService } from '../../../services/memories/MemoriesService.class'
 
 import { inject } from 'inversify'
@@ -26,7 +27,13 @@ export class VictimsController implements interfaces.Controller {
     @next() nextFunc: express.NextFunction
   ) {
     try {
-      const response = await generalMap(req.query)
+      let response
+      if (req.query && req.query.dpto && req.query.dpto === 'all') {
+        response = await firstLevelData()
+      } else {
+        response = await generalMap(req.query)
+      }
+
       const httpResponse: IResponse = {
         data: response,
       }
